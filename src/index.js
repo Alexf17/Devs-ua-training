@@ -4,6 +4,7 @@ const pictureService = new PictureService()
 const formEl = document.querySelector("form")
 const galleryWrap = document.querySelector(".render")
 formEl.addEventListener('submit', onSubmit)
+const list = document.querySelector(".ingredients")
 
 async function onSubmit(e) {
     e.preventDefault()
@@ -13,6 +14,12 @@ async function onSubmit(e) {
 }
 
 function markUp(card) {
+    const neww = card.filter(value => {
+        return Object.values(value)
+        
+    } )
+    console.log(neww)
+
     galleryWrap.insertAdjacentHTML('beforeend', card.map(
         ({
     strDrinkThumb,strDrink,strIngredient1,strIngredient2,strIngredient3,strIngredient4,strGlass,
@@ -20,7 +27,7 @@ function markUp(card) {
      `<div class="photo-card">
             <img src="${strDrinkThumb}" alt="${strDrink}" loading="lazy" height="300" width="400" />
             <div class="info">
-                <ul>
+                <ul class="ingredients">
                 <li>${strIngredient1}</li>
                 <li>${strIngredient2}</li>
                 <li>${strIngredient3}</li>
@@ -33,4 +40,16 @@ function markUp(card) {
     )
         .join('')
     )
+    // list.insertAdjacentHTML('beforeend', card.map(
+    //     {
+    // strIngredient1,strIngredient2,strIngredient3,strIngredient4,
+    //     }) =>
+    //  `
+    // <li>${strIngredient1}</li>
+    // <li>${strIngredient2}</li>
+    // <li>${strIngredient3}</li>
+    // `
+    // )
+    //     .join('')
+    
 }
