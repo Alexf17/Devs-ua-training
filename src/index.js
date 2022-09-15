@@ -1,16 +1,16 @@
 import PictureService from './js/api';
 const pictureService = new PictureService();
-import {makeIngridientsArr} from "./js/makeIngridientsArray"
+// import {makeIngridientsArr} from "./js/makeIngridientsArray"
 
 const formEl = document.querySelector('form');
 const galleryWrap = document.querySelector('.render');
 formEl.addEventListener('submit', onSubmit);
 const list = document.querySelector('.ingredients');
 
-let keys = [];
-let values = [];
-let filteredArray = [];
-const finalArray = [];
+// let keys = [];
+// let values = [];
+// let filteredArray = [];
+// const finalArray = [];
 
 async function onSubmit(e) {
   e.preventDefault();
