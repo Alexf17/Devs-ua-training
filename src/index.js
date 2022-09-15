@@ -1,10 +1,12 @@
 import PictureService from './js/api';
 const pictureService = new PictureService();
+import {makeIngridientsArr} from "./js/makeIngridientsArray"
 
 const formEl = document.querySelector('form');
 const galleryWrap = document.querySelector('.render');
 formEl.addEventListener('submit', onSubmit);
 const list = document.querySelector('.ingredients');
+
 let keys = [];
 let values = [];
 let filteredArray = [];
@@ -16,77 +18,84 @@ async function onSubmit(e) {
     .trim()
     .toLowerCase();
   const { data } = await pictureService.fetchByName();
-  markUp(data.drinks);
-  for (drink of data.drinks) {
-    const filteredArray2 = [];
-    let ingrObject = {};
-    // console.log(drink);
-    filteredArray = Object.keys(drink).filter(element =>
-      element.match(/strIngredient/g)
-    );
-    // console.log(filteredArray);
-    for (let i = 0; i < filteredArray.length; i += 1) {
-      //   console.log(filteredArray[i]);
+  const drinks = data.drinks;
+  cleanerMarkup();
+  markUp(drinks);
 
-      if (drink[filteredArray[i]] !== null) {
-        filteredArray2.push(drink[filteredArray[i]]);
-        ingrObject[filteredArray[i]] = drink[filteredArray[i]];
+  e.target.reset();
+  // const ingridientsArr = await makeIngridientsArr(drinks);
+  // console.log(ingridientsArr);
+
+
+
+  // for (drink of data.drinks) {
+  //   const filteredArray2 = [];
+  //   let ingrObject = {};
+  //   // console.log(drink);
+  //   filteredArray = Object.keys(drink).filter(element =>
+  //     element.match(/strIngredient/g)
+  //   );
+  //   // console.log(filteredArray);
+  //   for (let i = 0; i < filteredArray.length; i += 1) {
+  //     //   console.log(filteredArray[i]);
+
+  //     if (drink[filteredArray[i]] !== null) {
+  //       filteredArray2.push(drink[filteredArray[i]]);
+  //       ingrObject[filteredArray[i]] = drink[filteredArray[i]];
+  //     }
+  //   }
+  //   finalArray.push(ingrObject);
+  //   console.log(finalArray);
+  // }
+
+}
+
+ function cleanerMarkup() {
+    galleryWrap.innerHTML = '';
+  }
+// function consolee() {
+//   console.log(finalArray);
+// }
+// setTimeout(consolee, 5000);
+
+// console.log(keys);
+async function markUp(cards) {
+
+  let createMarkup = cards.map((card) => {
+    let ingredients = [];
+    for (let i = 1; i <= 15; i++) {
+      let nameOfProp = `strIngredient${i}`;
+      if (card[nameOfProp] !== null) {
+        ingredients.push(card[nameOfProp]);
       }
     }
-    finalArray.push(ingrObject);
-    console.log(finalArray);
-  }
-}
-function consolee() {
-  console.log(finalArray);
-}
-setTimeout(consolee, 5000);
+    let liMarkupFin = ``;
+    for (let i = 0; i < ingredients.length; i++){
+      let value = ingredients[i];
+      let liItemMarkup = `<li class="ingredients__item">${value}</li>`;
+       liMarkupFin += liItemMarkup;
+      
+    }
 
-console.log(keys);
-function markUp(card) {
-  const neww = card.filter(value => {
-    return Object.values(value);
-  });
-  console.log(neww);
+    const { strDrinkThumb, strDrink, strGlass } = card;
 
-  galleryWrap.insertAdjacentHTML(
-    'beforeend',
-    card
-      .map(
-        ({
-          strDrinkThumb,
-          strDrink,
-          strIngredient1,
-          strIngredient2,
-          strIngredient3,
-          strIngredient4,
-          strGlass,
-        }) =>
-          `<div class="photo-card">
+    return `<div class="photo-card">
             <img src="${strDrinkThumb}" alt="${strDrink}" loading="lazy" height="300" width="400" />
             <div class="info">
-                <ul class="ingredients">
-                <li>${strIngredient1}</li>
-                <li>${strIngredient2}</li>
-                <li>${strIngredient3}</li>
-                </ul>
-                <p class="info-item">
+            <p class="info-item">
+            <b> Cocktail Name: ${strDrink}</b>
+            </p>
+            <p class="info-item">
                 <b>Type of Glass: ${strGlass}</b>
-                </p>
+            </p>
+                <ul class="ingredients">
+                ${liMarkupFin}
+                </ul>
             </div>
             </div>`
-      )
-      .join('')
-  );
-  // list.insertAdjacentHTML('beforeend', card.map(
-  //     {
-  // strIngredient1,strIngredient2,strIngredient3,strIngredient4,
-  //     }) =>
-  //  `
-  // <li>${strIngredient1}</li>
-  // <li>${strIngredient2}</li>
-  // <li>${strIngredient3}</li>
-  // `
-  // )
-  //     .join('')
+  }).join('');
+
+  galleryWrap.insertAdjacentHTML('beforeend', createMarkup);
+  
 }
+
