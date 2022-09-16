@@ -2,10 +2,10 @@ import PictureService from './js/api';
 const pictureService = new PictureService();
 // import {makeIngridientsArr} from "./js/makeIngridientsArray"
 
-const formEl = document.querySelector('form');
-const galleryWrap = document.querySelector('.render');
-formEl.addEventListener('submit', onSubmit);
-const list = document.querySelector('.ingredients');
+// const formEl = document.querySelector('form');
+// const galleryWrap = document.querySelector('.render');
+// formEl.addEventListener('submit', onSubmit);
+// const list = document.querySelector('.ingredients');
 
 // let keys = [];
 // let values = [];
@@ -20,13 +20,11 @@ async function onSubmit(e) {
   const { data } = await pictureService.fetchByName();
   const drinks = data.drinks;
   cleanerMarkup();
-  markUp(drinks);
+  markUp(drinks, galleryWrap);
 
   e.target.reset();
   // const ingridientsArr = await makeIngridientsArr(drinks);
   // console.log(ingridientsArr);
-
-
 
   // for (drink of data.drinks) {
   //   const filteredArray2 = [];
@@ -47,39 +45,37 @@ async function onSubmit(e) {
   //   finalArray.push(ingrObject);
   //   console.log(finalArray);
   // }
-
 }
 
- function cleanerMarkup() {
-    galleryWrap.innerHTML = '';
-  }
+function cleanerMarkup() {
+  galleryWrap.innerHTML = '';
+}
 // function consolee() {
 //   console.log(finalArray);
 // }
 // setTimeout(consolee, 5000);
 
 // console.log(keys);
-async function markUp(cards) {
-
-  let createMarkup = cards.map((card) => {
-    let ingredients = [];
-    for (let i = 1; i <= 15; i++) {
-      let nameOfProp = `strIngredient${i}`;
-      if (card[nameOfProp] !== null) {
-        ingredients.push(card[nameOfProp]);
+export async function markUp(cards, renderTarget) {
+  let createMarkup = cards
+    .map(card => {
+      let ingredients = [];
+      for (let i = 1; i <= 15; i++) {
+        let nameOfProp = `strIngredient${i}`;
+        if (card[nameOfProp] !== null) {
+          ingredients.push(card[nameOfProp]);
+        }
       }
-    }
-    let liMarkupFin = ``;
-    for (let i = 0; i < ingredients.length; i++){
-      let value = ingredients[i];
-      let liItemMarkup = `<li class="ingredients__item">${value}</li>`;
-       liMarkupFin += liItemMarkup;
-      
-    }
+      let liMarkupFin = ``;
+      for (let i = 0; i < ingredients.length; i++) {
+        let value = ingredients[i];
+        let liItemMarkup = `<li class="ingredients__item">${value}</li>`;
+        liMarkupFin += liItemMarkup;
+      }
 
-    const { strDrinkThumb, strDrink, strGlass } = card;
+      const { strDrinkThumb, strDrink, strGlass } = card;
 
-    return `<div class="photo-card">
+      return `<div class="photo-card">
             <img src="${strDrinkThumb}" alt="${strDrink}" loading="lazy" height="300" width="400" />
             <div class="info">
             <p class="info-item">
@@ -92,10 +88,9 @@ async function markUp(cards) {
                 ${liMarkupFin}
                 </ul>
             </div>
-            </div>`
-  }).join('');
+            </div>`;
+    })
+    .join('');
 
-  galleryWrap.insertAdjacentHTML('beforeend', createMarkup);
-  
+  renderTarget.insertAdjacentHTML('beforeend', createMarkup);
 }
-
