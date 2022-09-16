@@ -15,40 +15,39 @@ async function onSubmit(e) {
   pictureService.name = e.currentTarget.elements.query.value
     .trim()
     .toLowerCase();
-  const { data } = await pictureService.fetchByName();
-  markUp(data.drinks);
-  for (drink of data.drinks) {
+  pictureService.fetchByName().then(({ data }) => {
+       markUp(data.drinks);
+ return data.drinks
+  })
+    .then(drinks => {
+      
+      for (const drink of drinks) {
     const filteredArray2 = [];
     let ingrObject = {};
     // console.log(drink);
     filteredArray = Object.keys(drink).filter(element =>
       element.match(/strIngredient/g)
     );
-    // console.log(filteredArray);
-    for (let i = 0; i < filteredArray.length; i += 1) {
-      //   console.log(filteredArray[i]);
+    
+        for (let i = 0; i < filteredArray.length; i += 1) {
 
       if (drink[filteredArray[i]] !== null) {
         filteredArray2.push(drink[filteredArray[i]]);
         ingrObject[filteredArray[i]] = drink[filteredArray[i]];
       }
     }
-    finalArray.push(ingrObject);
-    console.log(finalArray);
-  }
+        finalArray.push(ingrObject);
+      
+      }
+    return finalArray
+    })
+  .then(ingredients => markUp(ingredients))
+  
+  
 }
-function consolee() {
-  console.log(finalArray);
-}
-setTimeout(consolee, 5000);
 
-console.log(keys);
 function markUp(card) {
-  const neww = card.filter(value => {
-    return Object.values(value);
-  });
-  console.log(neww);
-
+console.log(card);
   galleryWrap.insertAdjacentHTML(
     'beforeend',
     card
@@ -56,20 +55,20 @@ function markUp(card) {
         ({
           strDrinkThumb,
           strDrink,
-          strIngredient1,
-          strIngredient2,
-          strIngredient3,
-          strIngredient4,
           strGlass,
+          strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5,
         }) =>
           `<div class="photo-card">
             <img src="${strDrinkThumb}" alt="${strDrink}" loading="lazy" height="300" width="400" />
             <div class="info">
-                <ul class="ingredients">
-                <li>${strIngredient1}</li>
-                <li>${strIngredient2}</li>
-                <li>${strIngredient3}</li>
-                </ul>
+              <ul>
+  <li>${strIngredient1}</li>
+  <li>${strIngredient2}</li>
+  <li>${strIngredient3}</li>
+  <li>${strIngredient4}</li>
+  <li>${strIngredient5}</li>
+
+</ul>
                 <p class="info-item">
                 <b>Type of Glass: ${strGlass}</b>
                 </p>
@@ -77,16 +76,30 @@ function markUp(card) {
             </div>`
       )
       .join('')
-  );
-  // list.insertAdjacentHTML('beforeend', card.map(
-  //     {
-  // strIngredient1,strIngredient2,strIngredient3,strIngredient4,
-  //     }) =>
-  //  `
-  // <li>${strIngredient1}</li>
-  // <li>${strIngredient2}</li>
-  // <li>${strIngredient3}</li>
-  // `
-  // )
-  //     .join('')
+  )
+
 }
+
+// function markupIngredients(ingredients) {
+//   const markup = ingredients.map(({strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10}) => `<ul>
+//   <li>${strIngredient1}</li>
+//   <li>${strIngredient2}</li>
+//   <li>${strIngredient3}</li>
+//   <li>${strIngredient4}</li>
+//   <li>${strIngredient5}</li>
+//   <li>${strIngredient6}</li>
+//   <li>${strIngredient7}</li>
+//   <li>${strIngredient8}</li>
+//   <li>${strIngredient9}</li>
+//   <li>${strIngredient10}</li>
+// </ul>`)
+//   .join('')
+//   list.insertAdjacentHTML('beforeend', markup)
+// }
+
+
+
+
+
+
+

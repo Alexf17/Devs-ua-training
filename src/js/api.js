@@ -13,7 +13,7 @@ export default class PictureService {
       try {
         const response = await axios.get(`lookup.php?i=${this.id}`)
           return response
-          console.log(response)
+          // console.log(response)
       } catch (error) {
         console.log(error)
     }
@@ -23,7 +23,7 @@ export default class PictureService {
       try {
         const response = await axios.get(`search.php?s=${this.name}`)
           return response
-          console.log(response)
+          // console.log(response)
       } catch (error) {
         console.log(error)
     }
@@ -33,7 +33,7 @@ export default class PictureService {
       try {
         const response = await axios.get(`search.php?f=${this.letter}`)
           return response
-          console.log(response)
+          // console.log(response)
       } catch (error) {
         console.log(error)
     }
