@@ -1,0 +1,99 @@
+.alph {
+  width: 450px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.alph__list {
+  background-color: rgba(29, 140, 160, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.alph__item {
+  margin: 8px;
+}
+
+.alph__link {
+  display: block;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: Relaway;
+
+  color: #188ca1;
+  cursor: pointer;
+  transform: scale(1);
+
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  &:hover,
+  &:focus {
+    color: #24cfed;
+    transform: scale(2);
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+}
+
+.card__list {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   margin: -15px;
+  justify-content: center;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, calc((100% - 90px) / 3));
+}
+
+.card__item {
+  border: 1px solid #000000;
+
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+  min-width: 370px;
+}
+
+.card__info {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  background-color: #ffffff;
+}
+
+.card__name {
+  margin-bottom: 16px;
+  font-family: Relaway;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 2;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #212121;
+}
+
+.card__btn {
+  margin: 0 auto;
+  cursor: pointer;
+  display: block;
+
+  background: #188ca1;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.17;
+  text-align: center;
+  letter-spacing: 0.03em;
+
+  max-width: 175px;
+  height: 42.5px;
+
+  color: #ffffff;
+}
+
+.card__img {
+  height: 294px;
+}
