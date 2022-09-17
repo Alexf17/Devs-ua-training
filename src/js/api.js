@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class PictureService {
+export default class ApiCoctails {
   constructor() {
     this.name = '';
     this.letter = '';

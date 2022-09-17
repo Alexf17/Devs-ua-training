@@ -1,5 +1,5 @@
-import PictureService from './api';
-const pictureService = new PictureService();
+import ApiCoctails from './api';
+const pictureService = new ApiCoctails();
 import { baseMarkUpCreate } from './createMarkUp';
 import Notiflix from 'notiflix';
 

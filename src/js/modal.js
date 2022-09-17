@@ -1,13 +1,16 @@
-import PictureService from './api';
+import ApiCoctails from './api';
 import { baseMarkUpCreate } from './createMarkUp';
+import Notiflix from 'notiflix';
+
 const confirmButtonEl = document.querySelector('.modal__btn');
 const backdropEl = document.querySelector('.backdrop');
 const bodyEl = document.querySelector('.page');
 const alph_container = document.querySelector('.card__list');
 const headerEl = document.querySelector('.header__container');
 const alphEl = document.querySelector('.alph');
-const xxx = new PictureService();
-import Notiflix from 'notiflix';
+
+const xxx = new ApiCoctails();
+
 confirmButtonEl.addEventListener('click', onButtonClick);
 backdropEl.addEventListener('click', onBackdropClick);
 
