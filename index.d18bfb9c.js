@@ -1,0 +1,2 @@
+const e=document.querySelector(".page"),s=document.querySelector(".theme-switcher"),t=document.querySelector("body");s.addEventListener("click",(function(s){e.classList.toggle("dark__theme"),t.classList.contains("dark__theme")?s.path[0].innerHTML='<use href="/symbol-defs.a8b2e413.svg#icon-sun"></use>':s.path[0].innerHTML='<use href="/symbol-defs.a8b2e413.svg#icon-moon"></use>'}));
+//# sourceMappingURL=index.d18bfb9c.js.map
