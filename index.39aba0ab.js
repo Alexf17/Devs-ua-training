@@ -1,2 +1,0 @@
-const e=document.querySelector(".page"),s=document.querySelector(".switcher__svg"),n=document.querySelector("body");s.addEventListener("click",(function(t){e.classList.toggle("dark__theme"),s.innerHTML="",n.classList.contains("dark__theme")?s.insertAdjacentHTML("beforeend",'<use href="/symbol-defs.a8b2e413.svg#icon-sun"></use>'):s.insertAdjacentHTML("beforeend",'<use href="/symbol-defs.a8b2e413.svg#icon-moon"></use>')}));
-//# sourceMappingURL=index.39aba0ab.js.map

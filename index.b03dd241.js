@@ -1,2 +1,0 @@
-!function(){var e=document.querySelector(".page"),n=document.querySelector(".switcher__svg"),s=document.querySelector("body");n.addEventListener("click",(function(t){e.classList.toggle("dark__theme"),n.innerHTML="",s.classList.contains("dark__theme")?n.insertAdjacentHTML("beforeend",'<use href="/symbol-defs.a8b2e413.svg#icon-sun"></use>'):n.insertAdjacentHTML("beforeend",'<use href="/symbol-defs.a8b2e413.svg#icon-moon"></use>')}))}();
-//# sourceMappingURL=index.b03dd241.js.map
