@@ -32,7 +32,7 @@
     transform: scale(2);
   }
 }
-  
+
 .card {
   display: flex;
   justify-content: center;
@@ -66,8 +66,8 @@
   margin-bottom: 16px;
   font-family: Relaway;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 2;
+  font-size: 20px;
+  line-height: 1.8;
   text-align: center;
   letter-spacing: 0.06em;
   color: #212121;
@@ -88,8 +88,8 @@
   text-align: center;
   letter-spacing: 0.03em;
 
+  padding: 10px 37px;
   max-width: 175px;
-  height: 42.5px;
 
   color: var(--white-color);
 }
