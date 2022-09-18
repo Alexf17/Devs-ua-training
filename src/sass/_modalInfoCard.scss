@@ -1,0 +1,66 @@
+.modal-card {
+  padding: 30px;
+  width: 879px;
+  height: 635px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.modal-img {
+  display: block;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-color: transparent;
+}
+.modal-info {
+}
+.modal-info-title {
+  margin-bottom: 15px;
+  font-family: 'Raleway';
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  color: var(--main-text-color);
+}
+.modal-info-span {
+  font-family: 'Raleway';
+  font-weight: 700;
+  font-size: 23px;
+  letter-spacing: 0.02em;
+  color: var(--title-color);
+  line-height: 1.17;
+}
+.modal-info-text {
+  margin-bottom: 10px;
+  font-family: 'Raleway';
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+
+  color: var(--main-text-color);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.modal-svg {
+  display: block;
+  box-sizing: border-box;
+}
+.modal-img-wrap {
+  margin-right: 40px;
+  width: 400px;
+  height: 438px;
+  outline: 1px solid tomato;
+}
