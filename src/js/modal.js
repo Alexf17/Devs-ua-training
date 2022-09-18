@@ -23,9 +23,9 @@ async function onBackdropClick(event) {
     const { data } = await xxx.fetchNonAlchogol();
 
     const cocktails = data.drinks;
-    baseMarkUpCreate(cocktails, refs.alph_container);
+    baseMarkUpCreate(cocktails, refs.menu_container);
     refs.headerEl.classList.add('visually-hidden');
-    refs.alphEl.classList.add('visually-hidden');
+    refs.menu_wrap.classList.add('visually-hidden');
     Notiflix.Notify.info('Only Non alchoholic cocktails for you', {
       timeout: '4000',
     });
