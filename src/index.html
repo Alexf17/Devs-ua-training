@@ -4,25 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
+    <link
+      type="image/x-icon"
+      href="./images/icons8-cocktail-cloud-32.png"
+      rel="shortcut icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
   </head>
-  <body>
-    <form>
-      <input type="text" class="search" name="query" />
-      <button type="submit" class="input">Search</button>
-    </form>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
+
+  <body class="page no-scroll">
+    <header>
+      <include src="./partials/header.html"></include>
+    </header>
+    <main>
+      <!-- ❗️❗️❗️ Add partials like so for every page -->
+
 
       <!-- <include src="./partials/hero.html"></include> -->
       <include src="./partials/sectionAbc.html"></include>
       <!-- <include src="./partials/footer.html"></include> -->
       <include src="./partials/entrance-modal.html"></include>
+
       <!-- <include src="./partials/modalInfoCard.html"></include> -->
+
     </main>
 
-    <button class="button2">Non-Alcohol</button>
-    <div class="render"></div>
-    <div class="ingredients"></div>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./js/seachByAlph.js"></script>
+    <script type="module" src="./js/changeTheme.js"></script>
+    <script type="module" src="./js/modal.js"></script>
+
   </body>
 </html>

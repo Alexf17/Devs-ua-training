@@ -12,5 +12,4 @@ export const refs = {
     formEl: document.querySelector('.form_input'),
     readMoreEl: document.querySelector('.card__btn'),
     closeBtnEl: document.querySelector('.modal-close'),
-    
 };

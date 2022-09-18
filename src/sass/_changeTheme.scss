@@ -1,0 +1,31 @@
+.light__theme {
+    background-color: rgba(29, 140, 160, 0.2);
+}
+
+// DARK THEME
+
+
+.dark__theme {
+    background-color: var(--title-color);
+
+    .card__btn {
+        color: var(--accent-color);
+        background: var(--title-color);
+    }
+
+    .card__info {
+        background-color: rgba(203, 230, 234, 0.792);
+    }
+
+    .menu__list {
+
+        background-color: rgba(203, 230, 234, 0.792);
+
+    }
+
+    .logo {
+        color: rgba(7, 32, 36, 0.954)
+    }
+
+}
+
