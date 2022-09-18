@@ -1,37 +1,31 @@
 import ApiCoctails from './api';
 import { baseMarkUpCreate } from './createMarkUp';
 import Notiflix from 'notiflix';
-
-const confirmButtonEl = document.querySelector('.modal__btn');
-const backdropEl = document.querySelector('.backdrop');
-const bodyEl = document.querySelector('.page');
-const alph_container = document.querySelector('.card__list');
-const headerEl = document.querySelector('.header__container');
-const alphEl = document.querySelector('.alph');
+import { refs } from './refs';
 
 const xxx = new ApiCoctails();
 
-confirmButtonEl.addEventListener('click', onButtonClick);
-backdropEl.addEventListener('click', onBackdropClick);
+refs.confirmButtonEl.addEventListener('click', onButtonClick);
+refs.backdropEl.addEventListener('click', onBackdropClick);
 
 function onButtonClick(event) {
-  backdropEl.classList.add('visually-hidden');
-  bodyEl.classList.remove('no-scroll');
+  refs.backdropEl.classList.add('visually-hidden');
+  refs.bodyEl.classList.remove('no-scroll');
 }
 
 async function onBackdropClick(event) {
-  if (backdropEl !== event.target) {
+  if (refs.backdropEl !== event.target) {
     return;
   }
-  backdropEl.classList.add('visually-hidden');
-  bodyEl.classList.remove('no-scroll');
+  refs.backdropEl.classList.add('visually-hidden');
+  refs.bodyEl.classList.remove('no-scroll');
   try {
     const { data } = await xxx.fetchNonAlchogol();
 
     const cocktails = data.drinks;
-    baseMarkUpCreate(cocktails, alph_container);
-    headerEl.classList.add('visually-hidden');
-    alphEl.classList.add('visually-hidden');
+    baseMarkUpCreate(cocktails, refs.alph_container);
+    refs.headerEl.classList.add('visually-hidden');
+    refs.alphEl.classList.add('visually-hidden');
     Notiflix.Notify.info('Only Non alchoholic cocktails for you', {
       timeout: '4000',
     });

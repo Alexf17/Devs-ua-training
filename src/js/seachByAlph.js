@@ -2,14 +2,10 @@ import ApiCoctails from './api';
 const pictureService = new ApiCoctails();
 import { baseMarkUpCreate } from './createMarkUp';
 import Notiflix from 'notiflix';
+import { refs } from './refs';
 
-const refs = {
-  letter: document.querySelector('.alph__link'),
-  alph_wrap: document.querySelector('.alph'),
-  alph_container: document.querySelector('.card__list'),
-};
 
-refs.alph_wrap.addEventListener('click', onClickLetter);
+refs.alphEl.addEventListener('click', onClickLetter);
 
 async function onClickLetter(e) {
   e.preventDefault();
