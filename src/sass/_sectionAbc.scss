@@ -1,9 +1,9 @@
-.alph {
+.menu {
   width: 450px;
   margin: 0 auto;
   margin-bottom: 30px;
 }
-.alph__list {
+.menu__list {
   background-color: rgba(29, 140, 160, 0.2);
   display: flex;
   flex-wrap: wrap;
@@ -11,10 +11,10 @@
   align-items: center;
 }
 
-// .alph__item {
+// .menu__item {
 // }
 
-.alph__link {
+.menu__link {
   padding: 10px;
   display: block;
   font-weight: 600;

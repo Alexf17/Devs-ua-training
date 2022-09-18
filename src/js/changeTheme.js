@@ -13,4 +13,4 @@ function changeTheme(e) {
         refs.buttonChangeTheme.insertAdjacentHTML('beforeend', '<use href="/Devs-ua-training/symbol-defs.df4646d6.svg#icon-moon"></use>')
         // e.path[0].innerHTML = '<use href="/symbol-defs.a8b2e413.svg#icon-moon"></use>'
     }
-
+}

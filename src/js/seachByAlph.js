@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 import { refs } from './refs';
 
 
-refs.alphEl.addEventListener('click', onClickLetter);
+refs.menu_wrap.addEventListener('click', onClickLetter);
 
 async function onClickLetter(e) {
   e.preventDefault();
@@ -17,7 +17,7 @@ async function onClickLetter(e) {
       const cocktails = data.drinks;
       console.log(cocktails);
       clearnerWrap();
-      baseMarkUpCreate(cocktails, refs.alph_container);
+      baseMarkUpCreate(cocktails, refs.menu_container);
     } catch (error) {
       console.error(error);
       Notiflix.Notify.failure('There are no cocktails with this name!');
@@ -29,5 +29,5 @@ async function onClickLetter(e) {
 }
 
 function clearnerWrap() {
-  refs.alph_container.innerHTML = '';
+  refs.menu_container.innerHTML = '';
 }
