@@ -10,4 +10,6 @@ export const refs = {
     bodyEl: document.querySelector('.page'),
     headerEl: document.querySelector('.header__container'),
     formEl: document.querySelector('.form_input'),
+    readMoreEl: document.querySelector('.card__btn'),
+    closeBtnEl: document.querySelector('.modal-close'),
 };

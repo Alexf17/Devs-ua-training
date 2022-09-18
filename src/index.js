@@ -94,3 +94,27 @@ export async function markUp(cards, renderTarget) {
 
   renderTarget.insertAdjacentHTML('beforeend', createMarkup);
 }
+
+// function markupIngredients(ingredients) {
+//   const markup = ingredients.map(({strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10}) => `<ul>
+//   <li>${strIngredient1}</li>
+//   <li>${strIngredient2}</li>
+//   <li>${strIngredient3}</li>
+//   <li>${strIngredient4}</li>
+//   <li>${strIngredient5}</li>
+//   <li>${strIngredient6}</li>
+//   <li>${strIngredient7}</li>
+//   <li>${strIngredient8}</li>
+//   <li>${strIngredient9}</li>
+//   <li>${strIngredient10}</li>
+// </ul>`)
+//   .join('')
+//   list.insertAdjacentHTML('beforeend', markup)
+// }
+
+
+
+
+
+
+
