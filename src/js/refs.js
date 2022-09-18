@@ -1,4 +1,4 @@
-const refs = {
+export const refs = {
     letter: document.querySelector('.alph__link'),
     alph_wrap: document.querySelector('.alph'),
     alph_container: document.querySelector('.card__list'),
