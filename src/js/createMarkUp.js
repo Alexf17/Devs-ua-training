@@ -21,7 +21,6 @@ export function baseMarkUpCreate(cards, renderTarget) {
 export function cleanerMarkup(markup) {
   markup.innerHTML = '';
 }
-
 // Функция которая создает разметку 
 export async function renderModalInfoMarkup(data, renderTarget) {
   let ingredientsList = await createIngridientsStr(data);
@@ -49,4 +48,3 @@ export async function renderModalInfoMarkup(data, renderTarget) {
   renderTarget.insertAdjacentHTML('beforeend', markup);
   
 }
-
