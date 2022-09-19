@@ -7,12 +7,13 @@ import { cleanerMarkup } from './createMarkUp';
 
 const cocktailService = new ApiCoctails();
 
-
+// cardListEl, modalInfoDivEl
 // cocktailService.fetchByName()
 
 // menu_container: document.querySelector('.card__list')
 // formEl: document.querySelector('form')
 refs.formEl.addEventListener('submit', onSubmit)
+refs.cardListEl.addEventListener('click', onReadMoreClick);
 
 async function onSubmit(e) {
   e.preventDefault();
@@ -31,12 +32,24 @@ async function onSubmit(e) {
         cleanerMarkup(refs.menu_container);
         baseMarkUpCreate(drinks, refs.menu_container);
         
+      
     } catch (error) {
       console.error(error);
       cleanerMarkup(refs.menu_container);
     }
   
-
+  
   e.target.reset();
 }
 
+
+function onReadMoreClick(e) {
+  // Проверяем, что б клик был именно по кнопке
+  if (e.target.nodeName !== 'BUTTON') {
+    console.log("Клик мимо бутончика!")
+    return
+  }
+  // Выводим id кнопки
+  console.log(e.target.id);
+  
+}

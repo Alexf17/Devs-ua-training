@@ -20,3 +20,22 @@ export function baseMarkUpCreate(cards, renderTarget) {
 export function cleanerMarkup(markup) {
   markup.innerHTML = '';
 }
+
+// Функция которая создает разметку 
+export function renderModalInfoMarkup(data, renderTarget) {
+
+  let markup = `<h3 class="modal-info-title">
+        <span class="modal-info-span">Name:</span>
+      </h3>
+      <p class="modal-info-text">
+        <span class="modal-info-span">Type of Glass:</span>
+      </p>
+      <p class="modal-info-text">
+        <span class="modal-info-span">Instruction:</span>
+      </p>
+      <p class="modal-info-text">
+        <span class="modal-info-span">Ingredients:</span>
+      </p>
+  `
+
+};
