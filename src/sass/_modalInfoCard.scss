@@ -17,12 +17,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   border-color: transparent;
+  cursor: pointer;
+  transition: fill var(--transition-duration) var(--transition-timing),
+    transform var(--transition-duration) var(--transition-timing);
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+    transform: scale(0.8);
+  }
 }
 .modal-info {
+  width: 379px;
 }
 .modal-info-title {
   margin-bottom: 15px;
@@ -57,10 +66,14 @@
 .modal-svg {
   display: block;
   box-sizing: border-box;
+  width: 25px;
+  height: 25px;
 }
 .modal-img-wrap {
   margin-right: 40px;
   width: 400px;
   height: 438px;
-  outline: 1px solid tomato;
+}
+.modal-content-wrap {
+  display: flex;
 }
