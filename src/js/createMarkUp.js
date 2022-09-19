@@ -21,10 +21,9 @@ export function cleanerMarkup(markup) {
   markup.innerHTML = '';
 }
 
-// Функция которая создает разметку 
+// Функция которая создает разметку
 export function renderModalInfoMarkup(data, renderTarget) {
-
-  let markup = `<h3 class="modal-info-title">
+  let markup = `<h3 class="modal-info-title"> 
         <span class="modal-info-span">Name:</span>
       </h3>
       <p class="modal-info-text">
@@ -36,6 +35,5 @@ export function renderModalInfoMarkup(data, renderTarget) {
       <p class="modal-info-text">
         <span class="modal-info-span">Ingredients:</span>
       </p>
-  `
-
-};
+  `;
+}
