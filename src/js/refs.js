@@ -14,4 +14,6 @@ export const refs = {
     closeBtnEl: document.querySelector('.modal-close'),
     cardListEl:document.querySelector('ul.card__list'),
     modalInfoDivEl: document.querySelector('.modal-info'),
+    modalCard: document.querySelector('.modal-content-wrap')
+
 };

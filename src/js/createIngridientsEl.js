@@ -14,3 +14,15 @@ export function createIngridientsEl(data) {
       }
   return liMarkupFin
 }
+
+export function createIngridientsStr(data) {
+  let ingredients = [];
+      for (let i = 1; i <= 15; i++) {
+        let nameOfProp = `strIngredient${i}`;
+        if (data[nameOfProp] !== null) {
+          ingredients.push(data[nameOfProp]);
+        }
+      }
+  const ingredientsStr = ingredients.join(', ');
+  return ingredientsStr
+}
