@@ -1,4 +1,6 @@
 import PictureService from './js/api';
+import { cleanerMarkup } from './js/createMarkUp';
+import { createIngridientsEl } from './js/createIngridientsEl';
 const pictureService = new PictureService();
 // import {makeIngridientsArr} from "./js/makeIngridientsArray"
 
@@ -19,7 +21,7 @@ async function onSubmit(e) {
     .toLowerCase();
   const { data } = await pictureService.fetchByName();
   const drinks = data.drinks;
-  cleanerMarkup();
+  cleanerMarkup(galleryWrap);
   markUp(drinks, galleryWrap);
 
   e.target.reset();
@@ -47,9 +49,6 @@ async function onSubmit(e) {
   // }
 }
 
-function cleanerMarkup() {
-  galleryWrap.innerHTML = '';
-}
 // function consolee() {
 //   console.log(finalArray);
 // }
@@ -59,19 +58,7 @@ function cleanerMarkup() {
 export async function markUp(cards, renderTarget) {
   let createMarkup = cards
     .map(card => {
-      let ingredients = [];
-      for (let i = 1; i <= 15; i++) {
-        let nameOfProp = `strIngredient${i}`;
-        if (card[nameOfProp] !== null) {
-          ingredients.push(card[nameOfProp]);
-        }
-      }
-      let liMarkupFin = ``;
-      for (let i = 0; i < ingredients.length; i++) {
-        let value = ingredients[i];
-        let liItemMarkup = `<li class="ingredients__item">${value}</li>`;
-        liMarkupFin += liItemMarkup;
-      }
+      let liMarkupFin = await createIngridientsEl(card);
 
       const { strDrinkThumb, strDrink, strGlass } = card;
 
@@ -95,22 +82,6 @@ export async function markUp(cards, renderTarget) {
   renderTarget.insertAdjacentHTML('beforeend', createMarkup);
 }
 
-// function markupIngredients(ingredients) {
-//   const markup = ingredients.map(({strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10}) => `<ul>
-//   <li>${strIngredient1}</li>
-//   <li>${strIngredient2}</li>
-//   <li>${strIngredient3}</li>
-//   <li>${strIngredient4}</li>
-//   <li>${strIngredient5}</li>
-//   <li>${strIngredient6}</li>
-//   <li>${strIngredient7}</li>
-//   <li>${strIngredient8}</li>
-//   <li>${strIngredient9}</li>
-//   <li>${strIngredient10}</li>
-// </ul>`)
-//   .join('')
-//   list.insertAdjacentHTML('beforeend', markup)
-// }
 
 
 
