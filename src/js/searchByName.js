@@ -13,12 +13,12 @@ const cocktailService = new ApiCoctails();
 // menu_container: document.querySelector('.card__list')
 // formEl: document.querySelector('form')
 refs.formEl.addEventListener('submit', onSubmit)
-refs.cardListEl.addEventListener('click', onReadMoreClick);
+
 
 async function onSubmit(e) {
   e.preventDefault();
   // Add trim() mуthod
-  cocktailService.name = e.currentTarget.elements.query.value.trim().toLowerCase().trim();
+  cocktailService.name = e.currentTarget.elements.query.value.toLowerCase().trim();
   
   // Add check value for non-empty string
   if (!cocktailService.name) {
@@ -30,7 +30,8 @@ async function onSubmit(e) {
         const { data } = await cocktailService.fetchByName();
         const drinks = data.drinks;
         cleanerMarkup(refs.menu_container);
-        baseMarkUpCreate(drinks, refs.menu_container);
+      baseMarkUpCreate(drinks, refs.menu_container);
+      
         
       
     } catch (error) {
@@ -43,13 +44,3 @@ async function onSubmit(e) {
 }
 
 
-function onReadMoreClick(e) {
-  // Проверяем, что б клик был именно по кнопке
-  if (e.target.nodeName !== 'BUTTON') {
-    console.log("Клик мимо бутончика!")
-    return
-  }
-  // Выводим id кнопки
-  console.log(e.target.id);
-  
-}
