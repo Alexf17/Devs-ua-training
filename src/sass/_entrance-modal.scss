@@ -16,14 +16,15 @@
   overflow: hidden;
 }
 
-.backdrop {
-  position: absolute;
+.backdrop-entrance {
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(174, 219, 225, 0.46);
   width: 100vw;
   height: 100vh;
 }
+
 .modal {
   padding: 20px;
   position: absolute;

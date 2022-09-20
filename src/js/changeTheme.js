@@ -2,7 +2,7 @@ import { refs } from './refs';
 
 
 refs.buttonChangeTheme.addEventListener('click', changeTheme)
-function changeTheme(e) {
+export function changeTheme(e) {
 
     refs.page.classList.toggle('dark__theme')
     refs.buttonChangeTheme.innerHTML = ''

@@ -6,8 +6,8 @@ export const refs = {
     buttonChangeTheme: document.querySelector('.switcher__svg'),
     body: document.querySelector('body'),
     confirmButtonEl: document.querySelector('.modal__btn'),
+    backdropEntranceEl:document.querySelector('.backdrop-entrance'),
     backdropEl: document.querySelector('.backdrop'),
-    bodyEl: document.querySelector('.page'),
     headerEl: document.querySelector('.header__container'),
     formEl: document.querySelector('.form_input'),
     readMoreEl: document.querySelector('.card__btn'),
@@ -15,5 +15,4 @@ export const refs = {
     cardListEl:document.querySelector('ul.card__list'),
     modalInfoDivEl: document.querySelector('.modal-info'),
     modalCard: document.querySelector('.modal-content-wrap')
-
 };
