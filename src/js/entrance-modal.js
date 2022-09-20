@@ -3,24 +3,25 @@ import { baseMarkUpCreate } from './createMarkUp';
 import Notiflix from 'notiflix';
 import { refs } from './refs';
 
-const xxx = new ApiCoctails();
+const cocktailService = new ApiCoctails();
 
 refs.confirmButtonEl.addEventListener('click', onButtonClick);
-refs.backdropEl.addEventListener('click', onBackdropClick);
+refs.backdropEntranceEl.addEventListener('click', onBackdropClick);
 
-function onButtonClick(event) {
-  refs.backdropEl.classList.add('visually-hidden');
-  refs.bodyEl.classList.remove('no-scroll');
+export function onButtonClick(event) {
+  event.preventDefault();
+  refs.backdropEntranceEl.classList.add('visually-hidden');
+  refs.page.classList.remove('no-scroll');
 }
 
-async function onBackdropClick(event) {
-  if (refs.backdropEl !== event.target) {
+export async function onBackdropClick(event) {
+  if (refs.backdropEntranceEl !== event.target) {
     return;
   }
-  refs.backdropEl.classList.add('visually-hidden');
-  refs.bodyEl.classList.remove('no-scroll');
+  refs.backdropEntranceEl.classList.add('visually-hidden');
+  refs.page.classList.remove('no-scroll');
   try {
-    const { data } = await xxx.fetchNonAlchogol();
+    const { data } = await cocktailService.fetchNonAlchogol();
 
     const cocktails = data.drinks;
     baseMarkUpCreate(cocktails, refs.menu_container);

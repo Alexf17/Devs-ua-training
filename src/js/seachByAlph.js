@@ -1,5 +1,5 @@
 import ApiCoctails from './api';
-const pictureService = new ApiCoctails();
+const cocktailService = new ApiCoctails();
 import { baseMarkUpCreate } from './createMarkUp';
 import Notiflix from 'notiflix';
 import { refs } from './refs';
@@ -11,9 +11,9 @@ async function onClickLetter(e) {
   e.preventDefault();
   let value = e.target.textContent.toLowerCase();
   if (value.length === 1) {
-    pictureService.letter = value;
+    cocktailService.letter = value;
     try {
-      const { data } = await pictureService.fetchByLetter();
+      const { data } = await cocktailService.fetchByLetter();
       const cocktails = data.drinks;
       console.log(cocktails);
       clearnerWrap();
