@@ -16,4 +16,7 @@ export const refs = {
   modalInfoDivEl: document.querySelector('.modal-info'),
   modalCard: document.querySelector('.modal-content-wrap'),
   filmList: document.querySelector('.film-list'),
+  heroImg: document.querySelector('.hero__img'),
+  heroImgWrap: document.querySelector('.hero__img-wrap'),
+
 };

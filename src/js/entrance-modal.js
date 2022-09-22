@@ -27,6 +27,9 @@ export async function onBackdropClick(event) {
     baseMarkUpCreate(cocktails, refs.menu_container);
     refs.headerEl.classList.add('visually-hidden');
     refs.menu_wrap.classList.add('visually-hidden');
+    refs.heroImg.style.width = '700px'
+    refs.heroImgWrap.style.width = '400px'
+    refs.heroImgWrap.style.top = '-40px'
     Notiflix.Notify.info('Only Non alchoholic cocktails for you', {
       timeout: '4000',
     });
