@@ -1,3 +1,73 @@
+.film-list {
+  height: 100%;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, calc((100% - 30px) / 3));
+}
+
 .film-wrap {
-  width: 300px;
+  // max-width: 395px; height: 574px;
+  margin-bottom: 12px;
+}
+
+.film-item {
+  position: relative;
+}
+.film-link {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  cursor: pointer;
+  // background-color: red;
+  // outline: red 5px dotted;
+  // height: 100%;
+  // width: 100%;
+  // z-index: 100;
+}
+.film-item-img {
+  width: 100%;
+  height: auto;
+}
+.film-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.film-title {
+  width: 100%;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.film-genres-date {
+  display: flex;
+  align-items: baseline;
+}
+.film-genres {
+  color: #ff6b08;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.film-release-date {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #ff6b08;
+  &::before {
+    display: inline-block;
+    align-self: baseline;
+    content: '';
+    width: 1px;
+    height: 14px;
+    background-color: #ff6b08;
+    margin: 0 5px;
+    font-weight: 500;
+  }
 }
