@@ -14,3 +14,18 @@ export function changeTheme(e) {
         // e.path[0].innerHTML = '<use href="/symbol-defs.a8b2e413.svg#icon-moon"></use>'
     }
 }
+
+const random = (min, max) => {
+    const rand = min + Math.random() * (max - min + 2)
+    return Math.floor(rand)
+}
+
+const btn = document.querySelector('.hero__btn')
+btn.addEventListener('mouseenter', () => {
+    btn.style.left = `${random(0, 100)}%`
+    btn.style.top = `${random(0, 100)}%`
+})
+
+btn.addEventListener('click', () => {
+    alert('А ты молодец !')
+})
