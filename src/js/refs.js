@@ -18,5 +18,6 @@ export const refs = {
   filmList: document.querySelector('.film-list'),
   heroImg: document.querySelector('.hero__img'),
   heroImgWrap: document.querySelector('.hero__img-wrap'),
-    // filmItemEl: document.querySelectorAll('.film-item'),
+  modalFilmWrap: document.querySelector('.modal-film-wrap'),
+  // filmItemEl: document.querySelectorAll('.film-item'),
 };
