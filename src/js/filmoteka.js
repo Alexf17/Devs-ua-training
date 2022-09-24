@@ -9,7 +9,7 @@ import { genresList } from './genres-list';
 import { refs } from './refs';
 // console.log(refs);
 const API_KEY = '74bfe718a55ac7916c6e6ad87b15f944';
-refs.filmList.addEventListener('click', onFilmItemClick);
+
 function fetchGenres() {
   return fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
@@ -35,7 +35,7 @@ function fetchGenres() {
 //   return result;
 // }
 
-const idArrayList = [28, 12, 16];
+// const idArrayList = [28, 12, 16];
 function searchGenresById(idArrayList) {
   const genresNameList = [];
   genresList.map(({ id, name }) => {
@@ -48,7 +48,7 @@ function searchGenresById(idArrayList) {
   return genresNameList.join(', ');
 }
 
-console.log(searchGenresById(idArrayList));
+// console.log(searchGenresById(idArrayList));
 
 function fetchFilms() {
   return fetch(
@@ -66,19 +66,21 @@ async function markUp() {
         title,
         genre_ids,
         release_date,
-        vote_average,
-      }) => `<li class="film-item">
-  <div class="film-wrap"><a class="film-link" id="${id}">
-  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item-img" alt="${title}" width="300"></a>
+        }) => `<li class="film-item">
+        <a class="film-link" id="${id}">
+  <div class="film-wrap">
+  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item-img" alt="${title}" width="300">
   </div>
-  <div class="film-info">
-  <p class="film-title">${title.toUpperCase()}</p>
+  <div>
+  <h3 class="film-title">${title.toUpperCase()}</h3>
+  </div>
   <div class="film-genres-date">
   <p class="film-genres">${searchGenresById(genre_ids)}</p>
   <p class="film-release-date">${new Date(release_date).getFullYear()}</p>
-  </div>
+  
    </div>
-  </li>`
+   </a>
+   </li>`
     )
     .join('');
   return value;
@@ -91,8 +93,3 @@ async function renderFilms() {
   refs.filmList.insertAdjacentHTML('beforeend', value);
 }
 renderFilms();
-
-function onFilmItemClick(event) {
-  event.preventDefault();
-  console.log(event.target);
-}
