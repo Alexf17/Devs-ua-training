@@ -24,7 +24,11 @@ const btn = document.querySelector('.hero__btn')
 btn.addEventListener('mouseenter', () => {
     btn.style.left = `${random(0, 100)}%`
     btn.style.top = `${random(0, 100)}%`
+    btn.style.backgroundColor = `rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)})`;
 })
+function getRandom(min, max){
+  return Math.ceil(Math.random() * (max - min) + min)
+}
 
 btn.addEventListener('click', () => {
     alert('А ты молодец !')
