@@ -1,0 +1,87 @@
+.modal{
+  &-card-film{
+    width: 806px;
+    height: 558px;
+  }
+  &-film-wrap{
+    display: flex;
+    
+  }
+  &-film-image-wrap{
+    width: 375px;
+    height: 478px;
+  }
+  &-film-info-wrap{
+    
+    width: 391px;
+    margin-left: 16px;
+  }
+
+  &-film-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  
+  }
+  &-film-info-list{
+    display: flex;
+    
+    margin-bottom: 20px;
+  }
+  &-film-about-title{
+margin-bottom: 8px;
+  }
+  &-film-about-text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+     
+    margin-bottom: 20px;
+    
+  }
+
+  &-film-properties-list{
+    margin-right: 85px;
+    
+  }
+    
+  &-film-value-item{
+    display: flex;
+    &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+  }
+  &-film-properties-item{
+    
+    &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+  }
+
+  &-film-button-list{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  &-film-vote-average{
+    margin-right: 3px;
+    padding: 1px 10px;
+    background-color: #FF6B01;
+    border-radius: 5px;
+    color: white;
+  }
+  &-film-vote-count{
+  margin-left: 3px;
+  padding: 1px 5px;
+  background-color: #F7F7F7;
+  border-radius: 5px;
+  color: black;
+  }
+}
