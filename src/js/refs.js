@@ -19,5 +19,9 @@ export const refs = {
   heroImg: document.querySelector('.hero__img'),
   heroImgWrap: document.querySelector('.hero__img-wrap'),
   modalFilmWrap: document.querySelector('.modal-film-wrap'),
+  queueModalBtnEl: document.querySelector('.modal-film-button'),
+  watchedModalBtnEl: document.querySelector('#watched'),
+  watchedHederBtnEl: document.querySelector('.watched-btn'),
+  queueHederBtnEl: document.querySelector('.queue-btn'),
   // filmItemEl: document.querySelectorAll('.film-item'),
 };
