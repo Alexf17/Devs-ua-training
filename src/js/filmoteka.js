@@ -1,14 +1,85 @@
-// https://api.themoviedb.org/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg
-
-// genre_ids: (3)[(16, 28, 14)];
-// poster_path: '/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg';
-// release_date: '2021-12-24';
-// title: 'Jujutsu Kaisen 0';
-// vote_average: 7.935;
 import { genresList } from './genres-list';
 import { refs } from './refs';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import MovieService from './film-api';
+import { cleanerMarkup } from './createMarkUp';
+const movieservice = new MovieService();
 // console.log(refs);
 const API_KEY = '74bfe718a55ac7916c6e6ad87b15f944';
+const container = document.getElementById('tui-pagination-container');
+
+const options = {
+  // below default value of options
+  totalItems: 1000,
+  itemsPerPage: 2,
+  visiblePages: 5,
+  page: 1,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
+const instance = new Pagination(container, options);
+container.addEventListener('click', onPagClick);
+function onPagClick() {
+  let currentPage = instance.getCurrentPage();
+  cleanerMarkup(refs.filmList);
+  let markUpValue = markUp2(currentPage);
+  renderFilms2(markUpValue);
+}
+
+async function renderFilms2(markUp) {
+  const value = await markUp;
+
+  refs.filmList.insertAdjacentHTML('beforeend', value);
+}
+
+async function markUp2(page) {
+  const response = await movieservice.fetchFilmsByPage(page);
+  const value = response.results
+    .map(
+      ({
+        id,
+        poster_path,
+        title,
+        genre_ids,
+        release_date,
+      }) => `<li class="film-item">
+        <a class="film-link" id="${id}">
+  <div class="film-wrap">
+  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item-img" alt="${title}" width="300">
+  </div>
+  <div>
+  <h3 class="film-title">${title.toUpperCase()}</h3>
+  </div>
+  <div class="film-genres-date">
+  <p class="film-genres">${searchGenresById(genre_ids)}</p>
+  <p class="film-release-date">${new Date(release_date).getFullYear()}</p>
+  
+   </div>
+   </a>
+   </li>`
+    )
+    .join('');
+  return value;
+}
 
 function fetchGenres() {
   return fetch(
@@ -50,14 +121,8 @@ function searchGenresById(idArrayList) {
 
 // console.log(searchGenresById(idArrayList));
 
-function fetchFilms() {
-  return fetch(
-    `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
-  ).then(response => response.json());
-}
-
 async function markUp() {
-  const results = await fetchFilms();
+  const results = await movieservice.fetchFilms();
   const value = results.results
     .map(
       ({
@@ -66,7 +131,7 @@ async function markUp() {
         title,
         genre_ids,
         release_date,
-        }) => `<li class="film-item">
+      }) => `<li class="film-item">
         <a class="film-link" id="${id}">
   <div class="film-wrap">
   <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item-img" alt="${title}" width="300">
@@ -93,7 +158,3 @@ async function renderFilms() {
   refs.filmList.insertAdjacentHTML('beforeend', value);
 }
 renderFilms();
-
-
-
-

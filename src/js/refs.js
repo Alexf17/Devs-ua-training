@@ -24,4 +24,5 @@ export const refs = {
   watchedHederBtnEl: document.querySelector('.watched-btn'),
   queueHederBtnEl: document.querySelector('.queue-btn'),
   // filmItemEl: document.querySelectorAll('.film-item'),
+  paginationWrapEl: document.querySelector('.pagination__wrap'),
 };

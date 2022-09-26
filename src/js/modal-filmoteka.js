@@ -2,29 +2,25 @@ import { refs } from './refs';
 import MovieService from './film-api';
 import { genresList } from './genres-list';
 import { title } from 'process';
-import {cleanerMarkup} from './createMarkUp'
+import { cleanerMarkup } from './createMarkUp';
 
 const movieService = new MovieService();
 
-let saveDataStorage = JSON.parse(localStorage.getItem('saveDataStorage')) ||  {
+let saveDataStorage = JSON.parse(localStorage.getItem('saveDataStorage')) || {
   queue: [],
   watched: [],
-}
+};
 if (saveDataStorage.watched.length !== 0) {
-  refs.watchedHederBtnEl.textContent = `watched  '${saveDataStorage.watched.length}'`;
+  refs.watchedHederBtnEl.textContent = `watched  ${saveDataStorage.watched.length}`;
+} else if (saveDataStorage.queue.length !== 0) {
+  // console.log(saveDataStorage.watched.length);
+  refs.queueHederBtnEl.textContent = `queue ${saveDataStorage.queue.length}`;
 }
-if (saveDataStorage.watched.length !== 0) {
-  refs.queueHederBtnEl.textContent = `queue '${saveDataStorage.queue.length}'`;
-}
-console.log(saveDataStorage)
-
-
 refs.filmList.addEventListener('click', onFilmItemClick);
 refs.closeBtnEl.addEventListener('click', onCloseFilmModal);
 refs.modalFilmWrap.addEventListener('click', onModalBtnClick);
 refs.watchedHederBtnEl.addEventListener('click', onWatchedHederBtnClick);
 refs.queueHederBtnEl.addEventListener('click', onQueueHederBtnClick);
-
 
 function onWatchedHederBtnClick() {
   cleanerMarkup(refs.filmList);
@@ -33,9 +29,9 @@ function onWatchedHederBtnClick() {
 function onQueueHederBtnClick() {
   cleanerMarkup(refs.filmList);
 }
-
-
+let filmArray = {};
 async function onFilmItemClick(event) {
+  console.log(window);
   event.preventDefault();
   if (event.target.parentNode.parentElement.nodeName !== 'A') {
     return;
@@ -43,15 +39,19 @@ async function onFilmItemClick(event) {
   let filmCardId = event.target.parentNode.parentElement.id;
   // console.dir(event.target.parentNode.parentElement);
   movieService.filmId = filmCardId;
+
   const backendData = await movieService.fetchById();
+
   const markup = await createFilmModalMarkup(backendData.data);
   cleanerMarkup(refs.modalFilmWrap);
   renderFilmModalMarkup(markup);
-  
-  
+
   refs.backdropEl.classList.remove('visually-hidden');
+  filmArray = backendData.data;
+  console.log(filmArray);
 }
 
+// console.log(await filmArray);
 function createFilmModalMarkup(data) {
   const {
     poster_path,
@@ -95,7 +95,6 @@ function createFilmModalMarkup(data) {
 
 function renderFilmModalMarkup(markup) {
   refs.modalFilmWrap.insertAdjacentHTML('beforeend', markup);
-
 }
 
 function onCloseFilmModal() {
@@ -104,34 +103,34 @@ function onCloseFilmModal() {
 }
 
 // добавили слушателя после рендера кнопок
-    // refs.queueModalBtnEl.addEventListener("click", onQueueModalBtnClick);
-    // refs.watchedModalBtnEl.addEventListener("click", onWatchedModalBtnClick);
+// refs.queueModalBtnEl.addEventListener("click", onQueueModalBtnClick);
+// refs.watchedModalBtnEl.addEventListener("click", onWatchedModalBtnClick);
 
 function onModalBtnClick(e) {
-  if (e.target.nodeName !== "BUTTON") {
+  // const filmArray =
+  console.log(filmArray);
+  if (e.target.nodeName !== 'BUTTON') {
     return;
   }
-  
-  if (e.target.dataset.action === "watched") {
-    // console.log(e.target.id);
-    let value = e.target.id;
-    
+
+  if (e.target.dataset.action === 'watched') {
+    let value = filmArray;
+
     saveDataStorage.watched.push(value);
     if (saveDataStorage.watched.length !== 0) {
-  refs.watchedHederBtnEl.textContent = `watched  '${saveDataStorage.watched.length}'`;
-}
-    localStorage.setItem('saveDataStorage', JSON.stringify(saveDataStorage))
+      refs.watchedHederBtnEl.textContent = `watched  ${saveDataStorage.watched.length}`;
+    }
+    localStorage.setItem('saveDataStorage', JSON.stringify(saveDataStorage));
   }
-  
-  if (e.target.dataset.action === "queue") {
-    let value2 = e.target.id;
-    
-    saveDataStorage.queue.push(value2);
-    
-    if (saveDataStorage.watched.length !== 0) {
-  refs.queueHederBtnEl.textContent = `queue '${saveDataStorage.queue.length}'`;
-}
-    localStorage.setItem('saveDataStorage', JSON.stringify(saveDataStorage))
-  }
-}
 
+  if (e.target.dataset.action === 'queue') {
+    let value2 = filmArray;
+
+    saveDataStorage.queue.push(value2);
+
+    if (saveDataStorage.watched.length !== 0) {
+      refs.queueHederBtnEl.textContent = `queue ${saveDataStorage.queue.length}`;
+    }
+    localStorage.setItem('saveDataStorage', JSON.stringify(saveDataStorage));
+  }
+}
